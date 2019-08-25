@@ -4,14 +4,16 @@
 # make executable via chmod 755 /path/to/file
 # store in ~/bin to have it auto-added to path on an ubuntu system
 
-title="System Information Report"
+TITLE="System Information Report For $HOSTNAME"
+CURRENT_TIME="$(date +"%x %r %Z")"
+TIMESTAMP="Generated $CURRENT_TIME, by $USER"
 
 echo "<html>
         <head>
-          <title>$title</title>
+          <title>$TITLE</title>
         </head>
         <body>
-          <h1>$title</h1>
-        </body>
+          <h1>$TITLE</h1>
+          <p>$TIMESTAMP</p>
       </html>"
 
