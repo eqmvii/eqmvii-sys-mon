@@ -2,13 +2,16 @@
 
 # Program to output a system information page
 # make executable via chmod 755 /path/to/file
+# store in ~/bin to have it auto-added to path on an ubuntu system
 
-echo "<html>"
-echo "  <head>"
-echo "    <title>Page Title</title>"
-echo "  </head>"
-echo "  <body>"
-echo "    Page Body"
-echo "  </body>"
-echo "</html>"
+title="System Information Report"
+
+echo "<html>
+        <head>
+          <title>$title</title>
+        </head>
+        <body>
+          <h1>$title</h1>
+        </body>
+      </html>"
 
