@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Program to output a system information page
+# make executable via chmod 755 /path/to/file
+
+echo "<html>"
+echo "  <head>"
+echo "    <title>Page Title</title>"
+echo "  </head>"
+echo "  <body>"
+echo "    Page Body"
+echo "  </body>"
+echo "</html>"
+
