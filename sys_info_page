@@ -6,14 +6,17 @@
 
 TITLE="System Information Report For $HOSTNAME"
 CURRENT_TIME="$(date +"%x %r %Z")"
-TIMESTAMP="Generated $CURRENT_TIME, by $USER"
+TIMESTAMP="Generated $CURRENT_TIME, by <a href="https://www.github.com/eqmvii">$USER</a>."
 
-echo "<html>
-        <head>
-          <title>$TITLE</title>
-        </head>
-        <body>
-          <h1>$TITLE</h1>
-          <p>$TIMESTAMP</p>
-      </html>"
-
+cat <<- _EOF_
+  <html>
+    <head>
+      <title>$TITLE</title>
+    </head>
+    <body>
+      <h1>$TITLE</h1>
+      <p>$TIMESTAMP</p>
+      </hr />
+    </body>
+  </html>
+_EOF_
