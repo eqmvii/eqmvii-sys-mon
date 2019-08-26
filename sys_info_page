@@ -8,6 +8,23 @@ TITLE="System Information Report For $HOSTNAME"
 CURRENT_TIME="$(date +"%x %r %Z")"
 TIMESTAMP="Generated $CURRENT_TIME, by <a href="https://www.github.com/eqmvii">$USER</a>."
 
+report_uptime () {
+  return
+}
+
+report_disk_space () {
+  return
+}
+
+report_home_space () {
+  return
+}
+
+get_current_git_sha () {
+  echo "SHA: $(git rev-parse HEAD)"
+  return
+}
+
 cat <<- _EOF_
   <html>
     <head>
@@ -17,6 +34,12 @@ cat <<- _EOF_
       <h1>$TITLE</h1>
       <p>$TIMESTAMP</p>
       </hr />
+      $(report_uptime)
+      $(report_disk_space)
+      $(report_home_space)
+      $(get_current_git_sha)
     </body>
   </html>
 _EOF_
+
+# Written entirely in vim! woah!
