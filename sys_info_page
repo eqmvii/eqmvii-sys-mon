@@ -3,6 +3,7 @@
 # Program to output a system information page
 # make executable via chmod 755 /path/to/file
 # store in ~/bin to have it auto-added to path on an ubuntu system
+# run by ./sys-info-page | output.txt && google-chrome output.txt
 
 TITLE="System Information Report For $HOSTNAME"
 CURRENT_TIME="$(date +"%x %r %Z")"
@@ -25,10 +26,17 @@ _EOF_
 }
 
 report_home_space () {
-  cat << _EOF_
-      <h2>Home Space Utilization</h2>
-      <pre>$(du -sh /home/*)</pre>
+  if [[ "$(id -u)" -eq 0 ]]; then
+    cat << _EOF_
+        <h2>Home Space Utilization (All Users)</h2>
+        <pre>$(du -sh /home/*)</pre>
 _EOF_
+  else
+    cat <<- _EOF_
+        <h2>Home Space Utilization ($USER)</h2>
+        <pre>$(du -sh $HOME)</pre>
+_EOF_
+fi
   return
 }
 
