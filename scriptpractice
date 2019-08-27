@@ -1,0 +1,19 @@
+#!/bin/bash -x
+
+echo -e "Current Value of Count: $count\n"
+
+(test -z $count) && count=-5 # if count has length 0, set it to 0
+
+while [[ "$count" -le 5 ]]; do
+  echo "$count"
+  count=$((count + 1))
+done
+
+read -p "enter a word > "
+
+case "$REPLY" in
+  [[:alpha:]]) echo "It was a single alpha character";;
+  ???) echo "It was exactly three characters long";;
+  *.txt) echo "is a word ending in '.txt'";;
+  *) echo "Is something else!";;
+esac
