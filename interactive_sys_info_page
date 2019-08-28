@@ -29,6 +29,36 @@ while [[ -n "$1" ]]; do
 	shift
 done
 
+# interactive mode 
+
+if [[ -n "$interactive" ]]; then
+	while true; do
+		read -p "Enter name of output file: " filename
+		if [[ -e "$filename" ]]; then
+			read -p "'$filename' exists. Overwrite? [y/n/q] > "
+			case "$REPLY" in
+				Y|y|yes) 	break # todo stuff
+						;;
+				Q|q|N|n|No)	echo "Program terminated."
+						exit
+						;;
+				*)		continue
+						;;
+			esac
+		elif [[ -z "$filename" ]]; then
+			continue # keep going until a filename is given
+		else
+			break
+		fi
+	done
+fi
+
 echo "Interactive: $interactive"
 echo "Filename: $filename"
 
+# output html page
+
+write_html_page() {
+	echo "not yet implemented"
+	exit 1
+}
