@@ -59,6 +59,45 @@ echo "Filename: $filename"
 # output html page
 
 write_html_page() {
-	echo "not yet implemented"
-	exit 1
+	cat <<- _EOF_
+	<html>
+		<head>
+			<title>$TITLE</title>
+		</head>
+		<body>
+			<h1>$TITLE</title>
+			<p>$TIMESTAMP</p>
+			$(report_uptime)
+			$(report_disk_space)
+			$(report_home_space)
+		</body>
+	</html>
+	_EOF_
+	return
 }
+
+report_uptime() {
+	echo "not yet implemented"
+	return
+}
+
+report_disk_space() {
+	echo "not yet implemented"
+	return
+}
+
+report_home_space() {
+	echo "not yet implemented"
+	return
+}
+
+if [[ -n "$filename" ]]; then
+	if touch "$filename" && [[ -f "$filename" ]]; then # touch handles invalid pathnames
+		write_html_page > "$filename"
+	else
+		echo "$PROGNAME: Cannot write file '$filename'" >&2
+		exit 1
+	fi
+else
+	write_html_page
+fi
